@@ -1,12 +1,11 @@
-function App() {
+import { RouterProvider } from "react-router-dom"
+import root from "./router/root"
 
-    return (
-        <div>
-            <h1 className="text-3xl font-bold underline">
-                Hello world!
-            </h1>
-        </div>
-    )
+function App() {
+  
+  return (
+    <RouterProvider router={root}/>
+  )
 }
 
 export default App
