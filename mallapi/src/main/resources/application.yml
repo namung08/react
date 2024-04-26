@@ -21,3 +21,8 @@ server:
       charset: UTF-8
       enabled: true
       force: true
+logging:
+  level:
+    sql: trace
+    com:
+      zaxxer: trace
