@@ -90,4 +90,9 @@ class TodoRepositoryTest {
         log.info(todoPage.getTotalElements());
         log.info(todoPage.getContent()+"\n");
     }
+
+    @Test
+    void testSearch() {
+        todoRepository.search();
+    }
 }
