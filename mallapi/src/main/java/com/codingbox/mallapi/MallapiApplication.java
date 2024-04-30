@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MallapiApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(MallapiApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(MallapiApplication.class, args);
+	}
 
 }
