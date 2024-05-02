@@ -3,10 +3,10 @@ package com.codingbox.mallapi.repository;
 import java.time.LocalDate;
 import java.util.Optional;
 
+import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnThreading;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,11 +15,10 @@ import org.springframework.data.domain.Sort;
 
 import com.codingbox.mallapi.domain.Todo;
 
-import lombok.extern.log4j.Log4j2;
 
 @SpringBootTest
 @Log4j2
-public class TodoRepositoryTest {
+class TodoRepositoryTest {
 	
 //	@Autowired
 //	private TodoRepository todoRepository;
@@ -39,16 +38,16 @@ public class TodoRepositoryTest {
 		log.info("result : " + todoRepository.getClass().getName());
 	}
 	
-//	@Test
+	@Test
 	public void saveTest() {
-		for(int i=0; i<100; i++) {
+//		for(int i=0; i<100; i++) {
 			Todo todo = new Todo();
-			todo.setTitle("title" + i);
-			todo.setContent("내용입력" + i);
-			todo.setWriter("writer" + i);
+			todo.setTitle("title");
+			todo.setContent("내용입력");
+			todo.setWriter("writer");
 			todo.setDueDate(LocalDate.of(2024, 04, 26));
 			todoRepository.save(todo);
-		}
+//		}
 	}
 	
 //	@Test

@@ -7,5 +7,4 @@ import com.codingbox.mallapi.dto.PageRequestDTO;
 
 public interface TodoSearch {
 	Page<Todo> search(PageRequestDTO pageRequestDTO);
-	
 }

@@ -9,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -17,11 +16,10 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-@NoArgsConstructor
 public class Todo {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "todoGenerator")
-	@SequenceGenerator(sequenceName = "todo_seq", name = "todoGenerator", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "todoGenerator")
+	@SequenceGenerator(sequenceName = "todo_seq",name="todoGenerator",allocationSize = 1)
 	private Long tno;
 	
 	@Column(length = 500, nullable = false)
@@ -30,23 +28,4 @@ public class Todo {
 	private String content;
 	private boolean complete;
 	private LocalDate dueDate;
-	
-	
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

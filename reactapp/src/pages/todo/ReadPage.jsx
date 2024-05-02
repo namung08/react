@@ -1,36 +1,44 @@
-import React from 'react';
-import {createSearchParams, useNavigate, useParams, useSearchParams} from "react-router-dom";
+import { useParams, useNavigate, useSearchParams, createSearchParams } from "react-router-dom";
+import ReadComponent from "../../components/todo/ReadComponent";
 
-const ReadPage = () => {
-    const {tno} = useParams()
-    const navigator = useNavigate()
-    const [queryParams] = useSearchParams()
-    // 페이징 처리
-    const page = queryParams.get('page') ? parseInt(queryParams.get('page')) : 1;
-    const size = queryParams.get('size') ? parseInt(queryParams.get('size')) : 10;
+const ReadPage = () =>{
+    const {tno} = useParams();
+    // const navigator = useNavigate();
+    // const[queryParams] = useSearchParams();
 
-    const quertyStr = createSearchParams({page:page, size:size}).toString();
+    // // 페이징 처리
+    // const page 
+    // = queryParams.get('page') ? parseInt(queryParams.get('page')) : 1;
+    // const size 
+    // = queryParams.get('size') ? parseInt(queryParams.get('size')) : 10;
 
-    // console.log(obj)
-    const moveToModify = () => {
-        // /todo/modify/tno
-        navigator(
-            {
-                pathname:`/todo/modify/${tno}`,
-                // URL 뒤에 위치한 파라미터 값을 넘겨주기 위해 사용
-                search:quertyStr
-            }
-        )
-    }
+    // const queryStr = createSearchParams({page:page, size:size}).toString();
+    
+    // const moveToModify = (tno) =>{
+    //     // /todo/modify/tno
+    //     navigator({
+    //         pathname:`/todo/modify/${tno}`,
+    //         search:queryStr
+    //     });
+    // }
 
-    return (
-        <div className="text-3xl font-extrabold">
-            <h1>Todo Read Page Component</h1>
-            <div>
-                <button onClick={()=> {moveToModify(tno)}}>Test Modify</button>
+
+    return(
+        <div className="font-extrabold w-full bg-white mt-6">
+            <div className="text-2xl">
+                Todo Read Page Component {tno}
             </div>
+            <ReadComponent tno={tno}/>
         </div>
+
+
+        // <div className="text-3xl font-extrabold">
+        //     Todo Read Page Component
+        //     <div>
+        //         <button onClick={()=>{moveToModify(tno)}}>Test Modify</button>
+        //     </div>
+        // </div>
     );
-};
+}
 
 export default ReadPage;

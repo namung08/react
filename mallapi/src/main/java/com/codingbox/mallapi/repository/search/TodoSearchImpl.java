@@ -17,40 +17,32 @@ import com.querydsl.jpa.JPQLQuery;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
-public class TodoSearchImpl extends QuerydslRepositorySupport implements TodoSearch  {
-	
+public class TodoSearchImpl extends QuerydslRepositorySupport implements TodoSearch {
+
 	public TodoSearchImpl() {
 		super(Todo.class);
 	}
-
-	// queryDSL작업시작
+	
+	// queryDSL 작업 시작
 	@Override
 	public Page<Todo> search(PageRequestDTO pageRequestDTO) {
-		log.info("============Search==========");
+		log.info("------------------------search----------------------");
 		QTodo todo = QTodo.todo;
 		JPQLQuery<Todo> query = from(todo);
 //		query.where(todo.title.contains("1"));
 		
-		// 페이징처리를 QueryDSL의 Pageable로 사용한다.
-//		Pageable pageable 
-//		= PageRequest.of(1, 10, Sort.by("tno").descending());
+		// 페이징 처리를 querydsl의 pageable로 사용한다.
+		//Pageable pageable = PageRequest.of(1, 10,Sort.by("tno").descending());
+		Pageable pageable = PageRequest.of(pageRequestDTO.getPage()-1, pageRequestDTO.getSize(),
+				Sort.by("tno").descending());
 		
-		Pageable pageable 
-		= PageRequest.of(pageRequestDTO.getPage() -1, 
-						pageRequestDTO.getSize(), 
-						Sort.by("tno").descending());
-		this.getQuerydsl().applyPagination(pageable, query);		
+		this.getQuerydsl().applyPagination(pageable, query);
 		
-		List<Todo> list = query.fetch();	// 목록데이터 가지고 올때		
-		long total = query.fetchCount();	// 주의사항 return Long
-		return new PageImpl<>(list, pageable, total);
+		
+		List<Todo> list = query.fetch();
+		long total = query.fetchCount();
+		
+		return new PageImpl<>(list, pageable,total);
 	}
 
 }
-
-
-
-
-
-
-

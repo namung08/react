@@ -1,12 +1,12 @@
 package com.codingbox.mallapi.service;
 
 import com.codingbox.mallapi.domain.Todo;
+
 import com.codingbox.mallapi.dto.PageRequestDTO;
 import com.codingbox.mallapi.dto.PageResponseDTO;
 import com.codingbox.mallapi.dto.TodoDTO;
 
 public interface TodoService {
-	// 조회
 	TodoDTO get(Long tno);
 	
 	// 등록
@@ -19,15 +19,10 @@ public interface TodoService {
 	void remove(Long tno);
 	
 	PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO);
-	
-	
-	
 	/*
-	 * default 키워드
-	 *  : 메소드를 default 키워드를 사용해서 선언함으로써
-	 *  메소드의 body, 즉 구현부를 작성할 수 있게 되었다. 
+	 *  default 키워드
+	 *   : 메서드를 default키워드를 사용해서 선언함으로써 메서드의 body, 즉 구현부를 작성할 수 있게 되었다.
 	 */
-	// entity를 DTO로 변환
 	default TodoDTO entityToDto(Todo todo) {
 		TodoDTO todoDTO = new TodoDTO();
 		todoDTO.setTno(todo.getTno());
@@ -35,7 +30,8 @@ public interface TodoService {
 		todoDTO.setContent(todo.getContent());
 		todoDTO.setWriter(todo.getWriter());
 		todoDTO.setComplete(todo.isComplete());
-		todoDTO.setDueDate(todo.getDueDate());		
+		todoDTO.setDueDate(todo.getDueDate());
+		
 		return todoDTO;
 	}
 	
@@ -48,16 +44,9 @@ public interface TodoService {
 		todo.setWriter(todoDTO.getWriter());
 		todo.setComplete(todoDTO.isComplete());
 		todo.setDueDate(todoDTO.getDueDate());
+		
 		return todo;
 	}
+	 
 	
 }
-
-
-
-
-
-
-
-
-

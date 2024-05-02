@@ -1,6 +1,6 @@
-import BasicMenu from "../components/menus/BasicMenu.jsx";
+import BasicMenu from "../components/BasicMenu";
 
-function BasicLayout({children}) {
+function BasicLayout({children}){
     return(
         <>
             {/* 기존 헤더 대신 BasicMenu*/ }
@@ -16,6 +16,7 @@ function BasicLayout({children}) {
             </div>
         </>
     );
+
 }
 
-export default BasicLayout
+export default BasicLayout;

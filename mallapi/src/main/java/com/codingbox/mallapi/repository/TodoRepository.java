@@ -10,7 +10,7 @@ import com.codingbox.mallapi.domain.Todo;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 
-//@Repository
+// @Repository
 @RequiredArgsConstructor
 @Transactional
 public class TodoRepository {
@@ -22,16 +22,15 @@ public class TodoRepository {
 	}
 	
 	public List<Todo> findAll(){
-		return em.createQuery("select m from Todo m",Todo.class)
-				 .getResultList();
+		return em.createQuery("select m from Todo m",Todo.class).getResultList();
 	}
 	
 	public Todo findById(Long id) {
-		Todo todo = em.find(Todo.class, id);
+		Todo todo = em.find(Todo.class,id);
 		return todo;
 	}
 	
-	public void update(Long id, Todo updateParam) {
+	public void update(Long id,Todo updateParam) {
 		Todo findTodo = findById(id);
 		findTodo.setTitle(updateParam.getTitle());
 		findTodo.setContent(updateParam.getContent());
@@ -39,17 +38,4 @@ public class TodoRepository {
 		findTodo.setWriter(updateParam.getWriter());
 		findTodo.setDueDate(updateParam.getDueDate());
 	}
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
